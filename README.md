@@ -24,32 +24,7 @@ Built for processing German and English documents: invoices, contracts, universi
 
 ---
 
-## Architecture
-
-```
-┌──────────────────────────────────────────────────────────┐
-│                    Streamlit Frontend                      │
-│              Upload · Chat · Extraction View               │
-└──────────────┬───────────────────────────┬───────────────┘
-               │ REST API                   │
-┌──────────────▼───────────────────────────▼───────────────┐
-│                    FastAPI Backend                         │
-│                                                           │
-│  ┌─────────┐   ┌──────────────┐   ┌──────────────────┐  │
-│  │   OCR   │   │  RAG Pipeline │   │   Structured     │  │
-│  │         │   │              │   │   Extraction      │  │
-│  │ PDF     │   │ Chunking    │   │                    │  │
-│  │ native  │──▶│ Embedding   │   │ Dates · Amounts   │  │
-│  │ +       │   │ FAISS Store │   │ Emails · IBANs    │  │
-│  │ Tesseract│  │ LLM Query  │   │ References         │  │
-│  └─────────┘   └──────┬───────┘   └──────────────────┘  │
-│                        │                                  │
-│              ┌─────────▼─────────┐                       │
-│              │  Groq API (Free)  │                       │
-│              │  Llama 3.1 8B     │                       │
-│              └───────────────────┘                       │
-└──────────────────────────────────────────────────────────┘
-```
+![Architecture](docs/architecture.svg)
 
 ---
 
